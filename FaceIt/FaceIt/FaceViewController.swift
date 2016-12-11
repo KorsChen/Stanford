@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FaceViewController: UIViewController
+class FaceViewController: UIViewController, UIScrollViewDelegate
 {
     var expression = FacialExpression(eyes: .Closed, eyeBrows: .Relaxed, mouth: .Smirk) {
         didSet {   
@@ -40,7 +40,7 @@ class FaceViewController: UIViewController
                 expression.eyes = .Open
             case .Squinting: break
             }
-        }
+         }
     }
     
     
