@@ -20,7 +20,7 @@ class CassiniViewController: UIViewController, UISplitViewControllerDelegate
         if segue.identifier == Storyboard.ShowImageSegue {
             if let ivc = segue.destination.contentViewController   as? ImageViewController {
                 let imageName = (sender as? UIButton)?.currentTitle
-                ivc.imageURL = DemoURL.NASAImageNamed(imageName)
+                ivc.imageURL = DemoURL.HZWImageNamed(imageName)
                 ivc.title =  imageName
             }
         }
@@ -31,7 +31,7 @@ class CassiniViewController: UIViewController, UISplitViewControllerDelegate
     {
         if let ivc = splitViewController?.viewControllers.last?.contentViewController as? ImageViewController {
             let imageName = sender.currentTitle
-            ivc.imageURL = DemoURL.NASAImageNamed(imageName)
+            ivc.imageURL = DemoURL.HZWImageNamed(imageName)
             ivc.title = imageName
         } else {
             performSegue(withIdentifier: Storyboard.ShowImageSegue, sender: sender)

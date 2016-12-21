@@ -10,15 +10,9 @@ import UIKit
 
 class ImageViewController: UIViewController, UIScrollViewDelegate
 {
-
-    var imageURL: URL? {
-        didSet {
-            image = nil
-            if view.window != nil {
-                fetchImage()
-            }
-        }
-    }
+    fileprivate var imageView = UIImageView()
+    
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     @IBOutlet weak var scrollView: UIScrollView! {
         didSet {
@@ -28,45 +22,24 @@ class ImageViewController: UIViewController, UIScrollViewDelegate
             scrollView.maximumZoomScale = 1.0
         }
     }
-    
-    func viewForZooming(in scrollView: UIScrollView) -> UIView?
-    {
-            return imageView
-    }
-    
-    private var imageView = UIImageView()
-    
-    private var image: UIImage? {
+
+    fileprivate var image: UIImage? {
         get {
             return imageView.image
         }
         set {
             imageView.image = newValue
             imageView.sizeToFit()
+            scrollView?.contentSize = imageView.frame.size
             spinner?.stopAnimating()
         }
     }
     
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
-    
-    private func fetchImage()
-    {
-        if let url = imageURL {
-            spinner?.startAnimating()
-            DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async { [weak weakSelf = self] in
-                let contentsOfURL = try? Data(contentsOf: url)
-                DispatchQueue.main.async {
-                    if url == weakSelf?.imageURL {
-                        if let imageData = contentsOfURL {
-                            weakSelf?.image = UIImage(data: imageData)
-                        } else {
-                            weakSelf?.spinner.stopAnimating()
-                        }
-                    } else {
-                        print("ignored data returned from url \(url)")
-                    }
-
-                }
+    var imageURL: URL? {
+        didSet {
+            image = nil
+            if view.window != nil {
+                fetchImage()
             }
         }
     }
@@ -76,20 +49,38 @@ class ImageViewController: UIViewController, UIScrollViewDelegate
         super.viewDidLoad()
         scrollView.addSubview(imageView)
     }
-
+    
     override func viewWillAppear(_ animated: Bool)
     {
+        super.viewWillAppear(animated)
         if image == nil {
             fetchImage()
         }
     }
     
-    override func didReceiveMemoryWarning()
+    func viewForZooming(in scrollView: UIScrollView) -> UIView?
     {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        return imageView
     }
-
     
-
+    fileprivate func fetchImage()
+    {
+        if let url = imageURL {
+            DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async {
+                let contentOfURL = try? Data(contentsOf: url)
+                DispatchQueue.main.async {
+                    if url == self.imageURL {
+                        if let imageData = contentOfURL {
+                            self.image = UIImage(data: imageData)
+                        } else {
+                            self.spinner?.stopAnimating()
+                        }
+                    } else {
+                        print("ignored data returned from url \(url)")
+                    }
+                }
+            }
+        }
+    }
+    
 }
