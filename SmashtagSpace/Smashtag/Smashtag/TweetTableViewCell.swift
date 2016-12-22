@@ -14,7 +14,7 @@ class TweetTableViewCell: UITableViewCell
     @IBOutlet weak var tweetScreenNameLabel: UILabel!
     @IBOutlet weak var tweetTextLabel: UILabel!
     @IBOutlet weak var tweetProfileImageView: UIImageView!
-    @IBOutlet weak var tweetCreateLabel: UILabel!
+    @IBOutlet weak var tweetCreatedLabel: UILabel!
     
     var tweet: Twitter.Tweet? {
         didSet {
@@ -24,23 +24,26 @@ class TweetTableViewCell: UITableViewCell
     
     fileprivate func updateUI()
     {
+        // reset any existing tweet information
         tweetTextLabel?.attributedText = nil
         tweetScreenNameLabel?.text = nil
         tweetProfileImageView?.image = nil
-        tweetCreateLabel?.text = nil
+        tweetCreatedLabel?.text = nil
         
-        if let tweet = self.tweet {
+        // load new information from our tweet (if any)
+        if let tweet = self.tweet
+        {
             tweetTextLabel?.text = tweet.text
-            if tweetTextLabel?.text != nil {
+            if tweetTextLabel?.text != nil  {
                 for _ in tweet.media {
                     tweetTextLabel.text! += " 📷"
                 }
             }
             
-            tweetScreenNameLabel?.text = "\(tweet.user)"
+            tweetScreenNameLabel?.text = "\(tweet.user)" // tweet.user.description
             
             if let profileImageURL = tweet.user.profileImageURL {
-                if let imageData = try? Data(contentsOf: profileImageURL) {
+                if let imageData = try? Data(contentsOf: profileImageURL) { // blocks main thread!
                     tweetProfileImageView?.image = UIImage(data: imageData)
                 }
             }
@@ -51,9 +54,9 @@ class TweetTableViewCell: UITableViewCell
             } else {
                 formatter.timeStyle = DateFormatter.Style.short
             }
-            
-            tweetCreateLabel?.text = formatter.string(from: tweet.created)
-            
+            tweetCreatedLabel?.text = formatter.string(from: tweet.created)
         }
+        
     }
+    
 }
