@@ -13,8 +13,10 @@
 		2C05DAE61DD9677F006DAC07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C05DAE51DD9677F006DAC07 /* Assets.xcassets */; };
 		2C05DAE91DD9677F006DAC07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C05DAE71DD9677F006DAC07 /* LaunchScreen.storyboard */; };
 		2C05DAF21DD96887006DAC07 /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05DAF11DD96887006DAC07 /* FaceView.swift */; };
+		2C4FEA761E51791E00B1D476 /* EyeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4FEA751E51791E00B1D476 /* EyeView.swift */; };
 		2C69A8361DE5667D00489D87 /* VCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C69A8351DE5667D00489D87 /* VCL.swift */; };
 		2C8B11271DE4BE4E00E9EE55 /* EmotionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8B11261DE4BE4E00E9EE55 /* EmotionsViewController.swift */; };
+		2CDE0EC81E4E1B1400F52607 /* BlinkingFaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE0EC71E4E1B1300F52607 /* BlinkingFaceViewController.swift */; };
 		2CE46C6A1DE3F41E00B60700 /* FacialExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE46C691DE3F41E00B60700 /* FacialExpression.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,8 +29,10 @@
 		2C05DAE81DD9677F006DAC07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C05DAEA1DD9677F006DAC07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C05DAF11DD96887006DAC07 /* FaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceView.swift; sourceTree = "<group>"; };
+		2C4FEA751E51791E00B1D476 /* EyeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EyeView.swift; sourceTree = "<group>"; };
 		2C69A8351DE5667D00489D87 /* VCL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCL.swift; sourceTree = "<group>"; };
 		2C8B11261DE4BE4E00E9EE55 /* EmotionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionsViewController.swift; sourceTree = "<group>"; };
+		2CDE0EC71E4E1B1300F52607 /* BlinkingFaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlinkingFaceViewController.swift; sourceTree = "<group>"; };
 		2CE46C691DE3F41E00B60700 /* FacialExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacialExpression.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,9 +67,11 @@
 			isa = PBXGroup;
 			children = (
 				2C05DAE01DD9677F006DAC07 /* FaceViewController.swift */,
+				2CDE0EC71E4E1B1300F52607 /* BlinkingFaceViewController.swift */,
 				2C8B11261DE4BE4E00E9EE55 /* EmotionsViewController.swift */,
 				2C05DAE21DD9677F006DAC07 /* Main.storyboard */,
 				2C05DAF11DD96887006DAC07 /* FaceView.swift */,
+				2C4FEA751E51791E00B1D476 /* EyeView.swift */,
 				2CE46C691DE3F41E00B60700 /* FacialExpression.swift */,
 				2C69A8351DE5667D00489D87 /* VCL.swift */,
 				2C05DAF01DD967AD006DAC07 /* Supporting Files */,
@@ -111,12 +117,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "陈志鹏";
 				TargetAttributes = {
 					2C05DADA1DD9677F006DAC07 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 687C4JR3J3;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -161,7 +168,9 @@
 				2CE46C6A1DE3F41E00B60700 /* FacialExpression.swift in Sources */,
 				2C8B11271DE4BE4E00E9EE55 /* EmotionsViewController.swift in Sources */,
 				2C69A8361DE5667D00489D87 /* VCL.swift in Sources */,
+				2CDE0EC81E4E1B1400F52607 /* BlinkingFaceViewController.swift in Sources */,
 				2C05DADF1DD9677F006DAC07 /* AppDelegate.swift in Sources */,
+				2C4FEA761E51791E00B1D476 /* EyeView.swift in Sources */,
 				2C05DAF21DD96887006DAC07 /* FaceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,6 +215,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -256,6 +266,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

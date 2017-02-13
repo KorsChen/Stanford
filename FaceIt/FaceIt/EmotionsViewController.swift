@@ -10,11 +10,11 @@ import UIKit
 
 class EmotionsViewController: UIViewController
 {
-    private let emotionalFaces: Dictionary<String, FacialExpression> = [
-        "angry" : FacialExpression(eyes: .Closed, eyeBrows: .Furrowed, mouth: .Frown),
-        "happy" : FacialExpression(eyes: .Open, eyeBrows: .Normal, mouth: .Smile),
-        "worri ed" : FacialExpression(eyes: .Open, eyeBrows: .Relaxed, mouth: .Smirk),
-        "mischievious" : FacialExpression(eyes: .Open, eyeBrows: .Furrowed, mouth: .Grin)
+    fileprivate let emotionalFaces: Dictionary<String, FacialExpression> = [
+        "angry" : FacialExpression(eyes: .closed, eyeBrows: .furrowed, mouth: .frown),
+        "happy" : FacialExpression(eyes: .open, eyeBrows: .normal, mouth: .smile),
+        "worri ed" : FacialExpression(eyes: .open, eyeBrows: .relaxed, mouth: .smirk),
+        "mischievious" : FacialExpression(eyes: .open, eyeBrows: .furrowed, mouth: .grin)
     ]
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
